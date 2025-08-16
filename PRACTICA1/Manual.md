@@ -451,7 +451,35 @@ Servidor de correos area de Servidores
 
 ## 4. Capturas de pantalla de pings entre hosts (comunicación entre áreas)
 
-primer nivel
+Ping de PC1 a PC4 area de recepcion
+![alt text](image-10.png)
+
+Ping de PC19 a PC13 area de Contabilidad
+![alt text](image-11.png)
+
+Ping de PC24 a PC25 area de Legal
+![alt text](image-12.png)
+
+Ping de PC27 a PC26 area de Reuniones
+![alt text](image-13.png)
+
+Ping de PC31 a PC57 area de Arquitectura
+![alt text](image-14.png)
+
+Ping de PC45 a PC42 area de Revision de planos
+![alt text](image-15.png)
+
+Ping de PC38 a PC36 area de Urbanismo
+![alt text](image-16.png)
+
+Ping de PC47 a PC48 area de Direccion general
+![alt text](image-17.png)
+
+Ping de PC55 a PC53 area de Ingenieria Civil
+![alt text](image-18.png)
+
+Ping de Servidor de Archivos a Servidor de Correos, area de Servidores
+![alt text](image-19.png)
 
 
 ---
@@ -461,6 +489,8 @@ primer nivel
 - **Captura ARP**: Mostrar intercambio ARP entre dos equipos.
 - **Captura ICMP**: Mostrar eco de ping exitoso.
 
-*(Aquí insertar imágenes desde Packet Tracer en modo simulación)*
-
+ICMP INICIO
+![alt text](image-20.png)
+ICMP FINAL
+![alt text](image-21.png)
 ---
