@@ -486,11 +486,16 @@ Ping de Servidor de Archivos a Servidor de Correos, area de Servidores
 
 ## 5. Capturas de Paquetes en Modo Simulación
 
-- **Captura ARP**: Mostrar intercambio ARP entre dos equipos.
-- **Captura ICMP**: Mostrar eco de ping exitoso.
 
-ICMP INICIO
-![alt text](image-20.png)
-ICMP FINAL
-![alt text](image-21.png)
+
+
+
+
+![alt text](image-22.png)
+- **Captura ARP**: 
+![alt text](image-23.png)
+![alt text](image-24.png)
+- **Captura ICMP**:
+![alt text](image-25.png)
+![alt text](image-26.png)
 ---
