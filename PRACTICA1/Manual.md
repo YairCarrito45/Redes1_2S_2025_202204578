@@ -1,7 +1,5 @@
 # Manual Técnico – Práctica Laboratorio Redes de Computadoras 1
-
-## Universidad San Carlos de Guatemala
-
+**Universidad San Carlos de Guatemala**
 **Facultad de Ingeniería – Ingeniería en Ciencias y Sistemas**
 **Curso:** Redes de Computadoras 1
 **Estudiante:** Estiben Yair Lopez Leveron
@@ -149,12 +147,12 @@ banner motd #Acceso Restringido#     ! Mensaje legal al iniciar sesión
 line console 0                       ! Config. acceso por consola física
 password 202204578                   ! Contraseña de consola
 login                                ! Exigir contraseña en consola
-exit                                 
+exit                         
 
 line vty 0 4                         ! Líneas virtuales (Telnet/SSH)
 password 202204578                   ! Contraseña para acceso remoto
 login                                ! Exigir contraseña en VTY
-exit                                 
+exit                         
 
 end                                  ! Salir a modo privilegiado
 write memory                         ! Guardar configuración en NVRAM
@@ -162,6 +160,7 @@ write memory                         ! Guardar configuración en NVRAM
 ```
 
 **SW_L1_RECEPCION**:
+
 ```bash
 enable
 configure terminal
@@ -181,24 +180,279 @@ end
 write memory
 
 ```
+
+**SW_L1_CONTABILIDAD**:
+
+```bash
+enable                               ! Modo privilegiado
+configure terminal                   ! Modo de configuración global
+hostname SW_L1_CONTABILIDAD          ! Nombre del switch
+enable secret 202204578              ! Clave cifrada para modo privilegiado
+service password-encryption          ! Cifra todas las contraseñas en la config
+banner motd #Acceso Restringido#     ! Mensaje legal al iniciar sesión
+
+line console 0                       ! Config. acceso por consola física
+password 202204578                   ! Contraseña de consola
+login                                ! Exigir contraseña en consola
+exit                         
+
+line vty 0 4                         ! Líneas virtuales (Telnet/SSH)
+password 202204578                   ! Contraseña para acceso remoto
+login                                ! Exigir contraseña en VTY
+exit                         
+
+end                                  ! Salir a modo privilegiado
+write memory                         ! Guardar configuración en NVRAM
+```
+
+**SW_L1_LEGAL**:
+
+```bash
+enable
+configure terminal
+hostname SW_L1_LEGAL                 ! Nombre del switch
+enable secret 202204578      
+service password-encryption
+banner motd #Acceso Restringido#
+line console 0
+ password 202204578
+ login
+ exit
+line vty 0 4
+ password 202204578
+ login
+ exit
+end
+write memory
+```
+
+**SW_L1_REUNIONES**:
+
+```bash
+enable
+configure terminal
+hostname SW_L1_REUNIONES             ! Nombre del switch
+enable secret 202204578
+service password-encryption
+banner motd #Acceso Restringido#
+line console 0
+ password 202204578
+ login
+ exit
+line vty 0 4
+ password 202204578
+ login
+ exit
+end
+write memory
+```
+
+**SW_L2 (Principal)**:
+
+```bash
+enable
+configure terminal
+hostname SW_L2                       ! Nombre del switch principal nivel 2
+enable secret 202204578
+service password-encryption
+banner motd #Acceso Restringido#
+line console 0
+ password 202204578
+ login
+ exit
+line vty 0 4
+ password 202204578
+ login
+ exit
+end
+write memory
+```
+
+**SW_L2_ARQUITECTURA**:
+
+```bash
+enable
+configure terminal
+hostname SW_L2_ARQUITECTURA          ! Switch del departamento de arquitectura
+enable secret 202204578
+service password-encryption
+banner motd #Acceso Restringido#
+line console 0
+ password 202204578
+ login
+ exit
+line vty 0 4
+ password 202204578
+ login
+ exit
+end
+write memory
+```
+
+**SW_L2_URBANISMO**:
+
+```bash
+enable
+configure terminal
+hostname SW_L2_URBANISMO             ! Switch del departamento de urbanismo
+enable secret 202204578
+service password-encryption
+banner motd #Acceso Restringido#
+line console 0
+ password 202204578
+ login
+ exit
+line vty 0 4
+ password 202204578
+ login
+ exit
+end
+write memory
+```
+
+**SW_L2_REUNIONES**:
+
+```bash
+enable
+configure terminal
+hostname SW_L2_REUNIONES             ! Switch sala de revisión de planos
+enable secret 202204578
+service password-encryption
+banner motd #Acceso Restringido#
+line console 0
+ password 202204578
+ login
+ exit
+line vty 0 4
+ password 202204578
+ login
+ exit
+end
+write memory
+```
+
+**SW_L3 (Principal)**:
+
+```bash
+enable
+configure terminal
+hostname SW_L3                       ! Switch principal nivel 3
+enable secret 202204578
+service password-encryption
+banner motd #Acceso Restringido#
+line console 0
+ password 202204578
+ login
+ exit
+line vty 0 4
+ password 202204578
+ login
+ exit
+end
+write memory
+```
+
+**SW_L3_DIRECCION**:
+
+```bash
+enable
+configure terminal
+hostname SW_L3_DIRECCION             ! Switch dirección general
+enable secret 202204578
+service password-encryption
+banner motd #Acceso Restringido#
+line console 0
+ password 202204578
+ login
+ exit
+line vty 0 4
+ password 202204578
+ login
+ exit
+end
+write memory
+```
+
+**SW_L3_INGENIERIA**:
+
+```bash
+enable
+configure terminal
+hostname SW_L3_INGENIERIA            ! Switch ingeniería civil
+enable secret 202204578
+service password-encryption
+banner motd #Acceso Restringido#
+line console 0
+ password 202204578
+ login
+ exit
+line vty 0 4
+ password 202204578
+ login
+ exit
+end
+write memory
+```
+
+**SW_L3_SERVIDORES**:
+
+```bash
+enable
+configure terminal
+hostname SW_L3_SERVIDORES            ! Switch departamento de servidores
+enable secret 202204578
+service password-encryption
+banner motd #Acceso Restringido#
+line console 0
+ password 202204578
+ login
+ exit
+line vty 0 4
+ password 202204578
+ login
+ exit
+end
+write memory
+```
+
 ---
 
-## 3. Configuración de VPCs
+## 3. Capturas de la configuración de las VPCs
+PC1 area de recepcion
+![alt text](image.png)
 
-*(Aquí insertarás las capturas de configuración de IP en las VPCs, una por cada área — total 10)*
+PC19 area de Contabilidad
+![alt text](image-1.png)
 
-Ejemplo:
+PC24 area de Legal
+![alt text](image-2.png)
 
-```
-VPCS> ip 192.168.78.10 255.255.255.0
-VPCS> save
-```
+PC27 area de Reuniones
+![alt text](image-3.png)
 
----
+PC31 area de Arquitectura
+![alt text](image-4.png)
 
-## 4. Pruebas de Conectividad (PING)
+PC45 area de Reuniones 2do piso
+![alt text](image-5.png)
 
-*(Insertar 10 capturas diferentes de pings entre áreas distintas. Ejemplo: Recepción → Contabilidad, Arquitectura → Ingeniería, etc.)*
+PC38 area de Urbanismo
+![alt text](image-6.png)
+
+PC47 area de Direccion general
+![alt text](image-7.png)
+
+PC55 area de Ingenieria Civil
+![alt text](image-8.png)
+
+Servidor de correos area de Servidores
+![alt text](image-9.png)
+-------------------------
+
+## 4. Capturas de pantalla de pings entre hosts (comunicación entre áreas)
+
+primer nivel
+
 
 ---
 
@@ -210,24 +464,3 @@ VPCS> save
 *(Aquí insertar imágenes desde Packet Tracer en modo simulación)*
 
 ---
-
-## 6. Observaciones Finales
-
-La red fue configurada siguiendo los estándares **TIA/EIA-568A** y **TIA/EIA-568B** para garantizar un cableado estructurado correcto. Se verificó la comunicación entre todas las áreas, y se validó la entrega de paquetes ICMP y ARP mediante el simulador de Cisco.
-
-
-| Dispositivo       | Piso | Dirección IP | Máscara      | Descripción      |
-| ----------------- | ---- | ------------- | ------------- | ----------------- |
-| SW\_L1\_RECEPCION | 1    | 192.168.78.2  | 255.255.255.0 | Switch recepción |
-| PC1               | 1    | 192.168.78.10 | 255.255.255.0 | Recepción        |
-| PC2               | 1    | 192.168.78.11 | 255.255.255.0 | Recepción        |
-| PC3               | 1    | 192.168.78.12 | 255.255.255.0 | Recepción        |
-| PC4               | 1    | 192.168.78.13 | 255.255.255.0 | Recepción        |
-| PC5               | 1    | 192.168.78.14 | 255.255.255.0 | Recepción        |
-| PC6               | 1    | 192.168.78.15 | 255.255.255.0 | Recepción        |
-| PC7               | 1    | 192.168.78.16 | 255.255.255.0 | Recepción        |
-| PC8               | 1    | 192.168.78.17 | 255.255.255.0 | Recepción        |
-| PC9               | 1    | 192.168.78.18 | 255.255.255.0 | Recepción        |
-| PC10              | 1    | 192.168.78.19 | 255.255.255.0 | Recepción        |
-| PC11              | 1    | 192.168.78.20 | 255.255.255.0 | Recepción        |
-| PC12              | 1    | 192.168.78.21 | 255.255.255.0 | Recepción        |
