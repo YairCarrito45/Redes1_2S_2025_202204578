@@ -1,0 +1,168 @@
+que es vlans?
+
+los vlans son areas de trabajo locales virtuales, estas son 
+redes logicas que se pueden crear dentro de un swicth para 
+separa y organizar los dispositivos que estan conectados
+son como que fueran otros cables pero fisicamente estan el mismo
+hardware.
+
+Explicandolo mas sencilla mente una vlan se usa para crear subredes
+virtuales dentro de un switch, cada vlan creada actua
+como si fuera una red independiente.
+
+
+los comandos basicos para crear una Vlan 
+enable
+configure terminal
+######
+enable
+configure terminal
+
+vlan 17
+ name Redaccion_Digital
+exit
+
+vlan 27
+ name Analisis_Datos
+exit
+
+vlan 37
+ name Infraestructura_IT
+exit
+
+vlan 47
+ name Seguridad
+exit
+
+vlan 57
+ name Gerencia
+exit
+
+################################
+
+luego se asignan valores para cada vlan con los siguientes comandos
+
+
+
+interface fa0/2                  es el puerto que permite usar la vlan
+ switchport mode access          se pone en modo acceso
+ switchport access vlan 17       le da acceso a la vlan
+
+
+###############################
+
+
+##########################################
+Que es un VTP?
+una Vtp (Vlan Trunking Protocolo) esto es un protocolo de cisco
+que sirve para administrar de manera centralizada 
+las vlans en una red con varios swicthes
+
+mas simple 
+con VTP es el comando con el que se borra, crea o se renombra una
+vlan en el switch servidor, automaticamente se replica la informacion
+a todos los switches clientes que esten en el mismo dominio VTP
+
+############################################
+swtich servidor
+comandos para usar VTP
+enable
+configure terminal
+vtp domain FIUComm
+vtp mode server
+vtp password proyecto12025
+
+
+swtich cliente 
+enable
+configure terminal
+vtp domain FIUComm
+vtp mode client
+vtp password proyecto12025
+################################################
+
+
+
+
+
+
+########################################################################################################
+
+que es STP?
+STP (Spanning Tree Protocol) es un protocolo que se usa en swicthes
+para evitar bucles de red cuando hay enlaces redundantes 
+
+en una definicion mas simple cuando se conecta a un switches con mas
+de un caminmo para redundantes pueden formarse bucles
+Los paquetes viajan en círculo infinito.
+
+Se satura la red con broadcasts (tormenta de broadcast).
+
+Se cae toda la comunicación.
+STP soluciona esto:
+Detecta los caminos redundantes.
+Elige el mejor camino principal.
+Bloquea temporalmente los enlaces sobrantes.
+Si el enlace principal falla, desbloquea automáticamente otro para mantener la red activa.
+
+comandos basicos para usar STP
+enable
+configure terminal
+spanning-tree mode pvst
+spanning-tree vlan 1 priority 4096
+spanning-tree mode rapid-pvst
+
+######################################################################################################
+
+
+comandos para agrupar etherchanel con cisco 
+
+que es etherchanel?
+
+etherchanel es una tecnologia de cisco que permite agrupar varios enlaces
+fisicos de red (interfaces) en un solo enlace logico 
+
+puedo combinar 2,3 o mas puertos fastEthernets o gigabitEthernet 
+entre swicthes o servidores 
+
+se suman las velocidades segun los puerto que combine se aumenta
+ancho de banda
+
+los protocolos son:
+PAgp este significa Port Agregation Protocolo  este es propio de cisco
+y 
+LACP este significa Link Agregation Control Protocolo 
+este es estandar y es compatible con mas fabricantes
+
+######################################################
+protocolo con PAgp
+enable
+configure terminal
+
+! Seleccionamos los 3 puertos que harán parte del EtherChannel
+interface range fa0/1 - 3  es el rango de los puertos
+ switchport mode trunk
+ channel-group 1 mode desirable
+exit
+#######################################################
+
+
+###########################################################
+protocolo con LACP
+enable
+configure terminal
+
+interface range fa0/1 - 3   es el rango de los puertos 
+ switchport mode trunk      
+ channel-group 2 mode active
+exit
+
+
+comandos de verificacion 
+show etherchannel summary
+show running-config
+###########################################################
+
+
+
+
