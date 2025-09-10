@@ -341,6 +341,7 @@ write
 ```
 
 
+
 Área: Redacción digital (RD)
 cliente
 Switches: SW18, SW19, SW20, MSW9
@@ -381,6 +382,185 @@ configure terminal
   vtp domain C5_FIUComm
 exit
 write
+
+```
+
+
+**configuracion de vtp**
+---
+switch servidor
+```
+!configuracion rojo LACP de servidor a MSW6
+enable 
+configure terminal
+! Enlaces físicos
+interface range fa0/6 - 8
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 1 mode active
+exit
+
+! Interfaz lógica del EtherChannel
+interface port-channel 1
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 18,28,38,48,58
+exit
+
+
+!configuracion rojo LACP de servidor a MSW5
+enable 
+configure terminal
+! Enlaces físicos
+interface range fa0/10 - 12
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 2 mode active
+exit
+
+! Interfaz lógica del EtherChannel
+interface port-channel 2
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 18,28,38,48,58
+exit
+
+
+!configuracion verde LACP de servidor a MSW1
+enable 
+configure terminal
+! Enlaces físicos
+interface range fa0/13 - 15
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 3 mode active
+exit
+
+! Interfaz lógica del EtherChannel
+interface port-channel 3
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 18,28,38,48,58
+exit
+
+!configuracion verde LACP de servidor a MSW1
+enable 
+configure terminal
+! Enlaces físicos
+interface range fa0/16 - 18
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 4 mode active
+exit
+
+! Interfaz lógica del EtherChannel
+interface port-channel 4
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 18,28,38,48,58
+exit
+
+```
+switch MSW1
+```
+!configuracion verde LACP de  MSW1 a servidor
+enable 
+configure terminal
+! Enlaces físicos
+interface range fa0/13 - 15
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 3 mode active
+exit
+
+! Interfaz lógica del EtherChannel
+interface port-channel 3
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 18,28,38,48,58
+exit
+
+```
+
+switch MSW2
+```
+!configuracion verde LACP de servidor a MSW1
+enable 
+configure terminal
+! Enlaces físicos
+interface range fa0/16 - 18
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 1 mode active
+exit
+
+! Interfaz lógica del EtherChannel
+interface port-channel 1
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 18,28,38,48,58
+exit
+
+```
+
+
+switch MSW6
+```
+!configuracion rojo LACP de servidor a MSW6
+enable 
+configure terminal
+! Enlaces físicos
+interface range fa0/6 - 8
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 1 mode active
+exit
+
+! Interfaz lógica del EtherChannel
+interface port-channel 1
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 18,28,38,48,58
+exit
+
+```
+
+
+switch MSW5
+
+```
+!configuracion rojo LACP de servidor a MSW6
+enable 
+configure terminal
+! Enlaces físicos
+interface range fa0/10 - 12
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 1 mode active
+exit
+
+! Interfaz lógica del EtherChannel
+interface port-channel 1
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 18,28,38,48,58
+exit
 
 ```
 
