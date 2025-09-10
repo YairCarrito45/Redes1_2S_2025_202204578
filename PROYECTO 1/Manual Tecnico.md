@@ -656,6 +656,28 @@ interface port-channel 1
  switchport trunk allowed vlan 18,28,38,48,58
 exit
 
+
+!configuracion verde LACP de MSW2 A MSW5
+enable 
+configure terminal
+! Enlaces físicos
+interface range fa0/13 - 15
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 2 mode active
+exit
+
+! Interfaz lógica del EtherChannel
+interface port-channel 2
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 18,28,38,48,58
+exit
+
+
+
 ```
 
 
@@ -743,6 +765,45 @@ interface port-channel 1
  switchport mode trunk
  switchport trunk allowed vlan 18,28,38,48,58
 exit
+
+!configuracion verde LACP de MS26 a MSW2
+enable 
+configure terminal
+! Enlaces físicos
+interface range fa0/13 - 15
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 2 mode active
+exit
+
+! Interfaz lógica del EtherChannel
+interface port-channel 2
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 18,28,38,48,58
+exit
+
+
+!configuracion azul PagP de MSW5 a MSW4
+enable
+configure terminal
+interface range fa0/16 - 18
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 3 mode desirable     
+exit
+
+! Port-channel lógico
+interface port-channel 3
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 18,28,38,48,58
+exit
+
 
 ```
 
