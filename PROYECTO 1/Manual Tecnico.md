@@ -12,6 +12,39 @@ Estiben Yair Lopez Leveron
 
 # Vlans y Direccionamiento Ip
 
+creacion de vlans Switch Servidor
+carnet 202204578
+como mi carnet termina en 8 se le puso al final de la vlan
+enable 
+```Cisco
+enable
+config terminal
+
+vlan 18
+ name RedaccionDigital
+ exit
+
+vlan 28
+ name AnalisisDatos
+ exit
+
+vlan 38
+ name InfraestructuraIT
+ exit
+
+vlan 48
+ name Seguridad
+ exit
+
+vlan 58
+ name Gerencia
+ exit
+
+exit
+write
+
+```
+
 # Configuracion de los Switches
 
 **configuracion de vtp**
