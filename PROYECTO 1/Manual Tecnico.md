@@ -967,6 +967,31 @@ write
 ```
 
 ## configuracion para conexiones
+
+switch MSW1
+```
+enable
+configure terminal
+interface range fa0/1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 18,28,38,48,58
+exit
+end
+write
+
+
+enable
+configure terminal
+interface range fa0/3
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 18,28,38,48,58
+exit
+end
+write
+```
+
 switch MSW2
 ```
 enable
@@ -991,6 +1016,7 @@ end
 write
 ```
 
+
 switch MSW3
 ```
 enable
@@ -1014,7 +1040,32 @@ exit
 end
 write
 
+
+enable
+configure terminal
+interface range fa0/2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 18,28,38,48,58
+exit
+end
+write
+
 ```
+
+switch MSW4
+```
+enable
+configure terminal
+interface range fa0/5
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 18,28,38,48,58
+exit
+exit
+write
+```
+
 
 switch MSW5
 ```
@@ -1029,20 +1080,45 @@ end
 write
 ```
 
-
-
-switch MSW4
+switch MSW6
 ```
 enable
 configure terminal
-interface range fa0/5
+interface range fa0/1
  switchport trunk encapsulation dot1q
  switchport mode trunk
  switchport trunk allowed vlan 18,28,38,48,58
 exit
-exit
+end
 write
 ```
+switch MSW7
+```
+enable
+configure terminal
+interface range fa0/1-3
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 18,28,38,48,58
+exit
+end
+write
+
+
+enable
+configure terminal
+interface range fa0/4-8
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 18,28,38,48,58
+exit
+end
+write
+
+
+
+```
+
 
 switch MSW8
 ```
@@ -1078,6 +1154,78 @@ exit
 end
 write
 ```
+
+switch MSW10
+```
+enable
+configure terminal
+interface range fa0/1 - 2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 18,28,38,48,58
+exit
+end
+write
+
+enable
+configure terminal
+interface range fa0/3
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 18,28,38,48,58
+exit
+end
+write
+```
+
+switch SW6
+```
+enable
+configure terminal
+ interface range fa0/1 , fa0/7
+  switchport mode trunk
+  switchport trunk allowed vlan 18,28,38,48,58
+ exit
+end
+write
+
+enable
+configure terminal
+ interface range fa0/3 - 5
+  switchport mode trunk
+  switchport trunk allowed vlan 18,28,38,48,58
+ exit
+end
+write
+
+```
+
+
+
+switch SW7
+```
+enable
+configure terminal
+ interface range fa0/1 , fa0/7
+  switchport mode trunk
+  switchport trunk allowed vlan 18,28,38,48,58
+ exit
+end
+write
+
+enable
+configure terminal
+ interface range fa0/3 - 5
+  switchport mode trunk
+  switchport trunk allowed vlan 18,28,38,48,58
+ exit
+end
+write
+
+```
+
+
+
 
 switch SW8
 ```
@@ -1248,6 +1396,147 @@ write
 
 ```
 
+switch S13
+```
+enable
+configure terminal
+ interface range fa0/1
+  switchport mode trunk
+  switchport trunk allowed vlan 18,28,38,48,58
+ exit
+end
+write
+
+
+enable
+configure terminal
+ interface fa0/10
+  description PC AD - Analisis de Datos
+  switchport mode access
+  switchport access vlan 28
+ exit
+end
+write
+```
+
+switch S14
+```
+enable
+configure terminal
+ interface range fa0/1-2
+  switchport mode trunk
+  switchport trunk allowed vlan 18,28,38,48,58
+ exit
+end
+write
+
+
+enable
+configure terminal
+ interface fa0/10
+  description LAPTOP S1 - Seguridad
+  switchport mode access
+  switchport access vlan 48
+ exit
+end
+write
+
+
+enable
+configure terminal
+ interface fa0/11
+  description LAPTOP IT5 - Infraestructura
+  switchport mode access
+  switchport access vlan 38
+ exit
+end
+write
+
+```
+
+
+switch SW15
+```
+enable
+configure terminal
+ interface range fa0/1-2
+  switchport mode trunk
+  switchport trunk allowed vlan 18,28,38,48,58
+ exit
+end
+write
+
+
+enable
+configure terminal
+ interface fa0/10
+  description PC RD8 - RedaccionDigital
+  switchport mode access
+  switchport access vlan 18
+ exit
+end
+write
+
+```
+
+switch SW16
+```
+enable
+configure terminal
+ interface range fa0/1-2
+  switchport mode trunk
+  switchport trunk allowed vlan 18,28,38,48,58
+ exit
+end
+write
+
+
+enable
+configure terminal
+ interface fa0/10
+  description Laptop G1 - Gerencia
+  switchport mode access
+  switchport access vlan 58
+ exit
+end
+write
+```
+
+
+
+switch SW17
+```
+enable
+configure terminal
+ interface range fa0/2
+  switchport mode trunk
+  switchport trunk allowed vlan 18,28,38,48,58
+ exit
+end
+write
+
+
+enable
+configure terminal
+ interface fa0/10
+  description Laptop AD7 - Analisis de Datos
+  switchport mode access
+  switchport access vlan 28
+ exit
+end
+write
+
+
+enable
+configure terminal
+ interface fa0/11
+  description PC IT4 - Infraestructura
+  switchport mode access
+  switchport access vlan 38
+ exit
+end
+write
+```
 
 switch MSW9
 
