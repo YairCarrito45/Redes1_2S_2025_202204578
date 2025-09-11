@@ -85,7 +85,6 @@ Lista de configuracion de ips y vlans
 **configuracion de vtp**
 
 Área central:
-
 Switch Multicapa (Servidor VTP)
 
 ```Cisco
@@ -414,9 +413,29 @@ exit
 write
 
 ```
+## configuracion de STP
 
-**configuracion de vtp**
-------------------------
+switch servidor
+```
+enable 
+configure terminal
+ spanning-tree vlan 18,28,38,48,58 root secondary
+end
+write
+```
+
+## swtich transpartente 
+crea vlan 
+```
+enable
+configure terminal
+ vlan 78
+  name Recepcion
+end
+write
+```
+
+## configuracion de Etherchannels
 
 switch servidor
 
@@ -871,6 +890,80 @@ vlan 58
 
 exit
 write
+```
+
+## Banners MOTD (5 switches, uno por área)
+
+switch de bienvenida
+
+switch SW1 (Anilisis de Datos)
+```
+enable
+configure terminal
+ hostname SW1
+ banner motd #
+ Bienvenido a Analisis de Datos - FIUComm_202204578
+ #
+end
+write
+
+```
+
+switch SW18 (Redaccion Digital)
+
+```
+enable
+configure terminal
+ hostname SW18
+ banner motd #
+ Bienvenido a Redaccion Digital - FIUComm_202204578
+ #
+end
+write
+
+```
+
+
+switch SW8 (Infraestructura IT)
+
+```
+enable
+configure terminal
+ hostname SW8
+ banner motd #
+ Bienvenido a Infraestructura IT - FIUComm_202204578
+ #
+end
+write
+
+```
+
+
+switch SW8 (Area de Gerencia)
+
+```
+enable
+configure terminal
+ hostname SW15
+ banner motd #
+ Bienvenido a Area de Gerencia - FIUComm_202204578
+ #
+end
+write
+
+```
+
+switch SW8 (Area central Backone)
+
+```
+enable
+configure terminal
+ banner motd #
+ Bienvenido a Area Central Backone - FIUComm_202204578
+ #
+end
+write
+
 ```
 
 # Pruebas de Conectividad
