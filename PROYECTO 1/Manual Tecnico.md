@@ -1178,11 +1178,84 @@ end
 write
 ```
 
-switch SW6
+switch SW1
 ```
 enable
 configure terminal
- interface range fa0/1 , fa0/7
+ interface range fa0/1
+  switchport mode trunk
+  switchport trunk allowed vlan 18,28,38,48,58
+ exit
+end
+write
+
+enable
+configure terminal
+ interface range fa0/8
+  switchport mode trunk
+  switchport trunk allowed vlan 18,28,38,48,58
+ exit
+end
+write
+
+enable
+configure terminal
+ interface range fa0/3 
+  switchport mode trunk
+  switchport trunk allowed vlan 18,28,38,48,58
+ exit
+end
+write
+
+enable
+configure terminal
+ interface range fa0/4
+  switchport mode trunk
+  switchport trunk allowed vlan 18,28,38,48,58
+ exit
+end
+write
+
+
+
+enable
+configure terminal
+ interface range fa0/6
+  switchport mode trunk
+  switchport trunk allowed vlan 18,28,38,48,58
+ exit
+end
+write
+
+
+enable
+configure terminal
+ interface fa0/11
+  description Latpop IT8 - Infraestructura
+  switchport mode access
+  switchport access vlan 38
+ exit
+end
+write
+
+
+enable
+configure terminal
+ interface fa0/10
+  description PC AD2 - AnalisisdeDatos
+  switchport mode access
+  switchport access vlan 28
+ exit
+end
+write
+
+```
+
+switch SW2
+```
+enable
+configure terminal
+ interface range fa0/1 - 2
   switchport mode trunk
   switchport trunk allowed vlan 18,28,38,48,58
  exit
@@ -1197,6 +1270,207 @@ configure terminal
  exit
 end
 write
+
+
+
+enable
+configure terminal
+ interface fa0/10
+  description PC RD3 - RedaccionDigital
+  switchport mode access
+  switchport access vlan 18
+ exit
+end
+write
+```
+
+
+switch SW3
+```
+enable
+configure terminal
+ interface range fa0/1 - 2
+  switchport mode trunk
+  switchport trunk allowed vlan 18,28,38,48,58
+ exit
+end
+write
+
+enable
+configure terminal
+ interface range fa0/5
+  switchport mode trunk
+  switchport trunk allowed vlan 18,28,38,48,58
+ exit
+end
+write
+
+
+enable
+configure terminal
+ interface fa0/10
+  description PC G3 - Gerencia
+  switchport mode access
+  switchport access vlan 58
+ exit
+end
+write
+
+
+enable
+configure terminal
+ interface fa0/11
+  description Laptop AD5 - Analisis de Datos
+  switchport mode access
+  switchport access vlan 28
+ exit
+end
+write
+
+
+enable
+configure terminal
+ interface fa0/12
+  description Laptop AD1 - Analisis de Datos
+  switchport mode access
+  switchport access vlan 28
+ exit
+end
+write
+```
+
+switch SW4
+```
+enable
+configure terminal
+ interface range fa0/1 - 2
+  switchport mode trunk
+  switchport trunk allowed vlan 18,28,38,48,58
+ exit
+end
+write
+
+enable
+configure terminal
+ interface range fa0/4 - 6
+  switchport mode trunk
+  switchport trunk allowed vlan 18,28,38,48,58
+ exit
+end
+write
+
+
+enable
+configure terminal
+ interface fa0/10
+  description PC RD5 - RedaccionDigital
+  switchport mode access
+  switchport access vlan 18
+ exit
+end
+write
+
+```
+
+
+
+switch SW5
+```
+enable
+configure terminal
+ interface range fa0/1 - 2
+  switchport mode trunk
+  switchport trunk allowed vlan 18,28,38,48,58
+ exit
+end
+write
+
+enable
+configure terminal
+ interface range fa0/4 - 6
+  switchport mode trunk
+  switchport trunk allowed vlan 18,28,38,48,58
+ exit
+end
+write
+
+
+
+enable
+configure terminal
+ interface fa0/11
+  description PC G4 - Gerencia
+  switchport mode access
+  switchport access vlan 58
+ exit
+end
+write
+
+
+enable
+configure terminal
+ interface fa0/10
+  description Laptop S4 - Seguridad
+  switchport mode access
+  switchport access vlan 48
+ exit
+end
+write
+```
+
+switch SW6
+```
+enable
+configure terminal
+ interface range fa0/1 - 2
+  switchport mode trunk
+  switchport trunk allowed vlan 18,28,38,48,58
+ exit
+end
+write
+
+enable
+configure terminal
+ interface range fa0/3 , fa0/4 , fa0/6
+  switchport mode trunk
+  switchport trunk allowed vlan 18,28,38,48,58
+ exit
+end
+write
+
+
+
+enable
+configure terminal
+ interface fa0/12
+  description Laptop AD3 - Analisis de Datos
+  switchport mode access
+  switchport access vlan 28
+ exit
+end
+write
+
+
+enable
+configure terminal
+ interface fa0/11
+  description PC AD4 - Analisis de Datos
+  switchport mode access
+  switchport access vlan 28
+ exit
+end
+write
+
+enable
+configure terminal
+ interface fa0/10
+  description LAPTOP RD4 - Redaccion Digital
+  switchport mode access
+  switchport access vlan 18
+ exit
+end
+write
+
 
 ```
 
@@ -1218,6 +1492,28 @@ configure terminal
  interface range fa0/3 - 5
   switchport mode trunk
   switchport trunk allowed vlan 18,28,38,48,58
+ exit
+end
+write
+
+
+enable
+configure terminal
+ interface fa0/10
+  description PC RD1 - Redaccion Digital
+  switchport mode access
+  switchport access vlan 18
+ exit
+end
+write
+
+
+enable
+configure terminal
+ interface fa0/11
+  description PC IT7 - Infraestructura
+  switchport mode access
+  switchport access vlan 38
  exit
 end
 write
@@ -1267,6 +1563,8 @@ configure terminal
  exit
 end
 write
+
+
 
 
 ```
