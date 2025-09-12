@@ -8,7 +8,7 @@ Estiben Yair Lopez Leveron
 
 ## Topologia de Red
 
-![alt text](image.png)
+![alt text](image-8.png)
 
 # Vlans y Direccionamiento Ip
 
@@ -419,7 +419,25 @@ switch servidor
 ```
 enable 
 configure terminal
- spanning-tree vlan 18,28,38,48,58 root secondary
+ spanning-tree vlan 1,18,28,38,48,58 root primary   
+end
+write
+```
+
+swtich clientes (todos los del area central menos el servidor)
+```
+enable 
+configure terminal
+ spanning-tree vlan 1,18,28,38,48,58 root secondary
+end
+write
+```
+
+Para los otros switches
+```
+enable 
+configure terminal
+ spanning-tree vlan 1,18,28,38,48,58 priority 32768
 end
 write
 ```
@@ -950,7 +968,6 @@ configure terminal
  #
 end
 write
-
 ```
 
 switch SW8 (Area central Backone)
@@ -965,6 +982,21 @@ end
 write
 
 ```
+
+switch SW19 (Area Local)
+
+```
+enable
+configure terminal
+ banner motd #
+ Bienvenido a Area Local - FIUComm_202204578
+ #
+end
+write
+
+```
+
+
 
 ## configuracion para conexiones
 
@@ -2012,9 +2044,33 @@ end
 write
 ```
 
-
-
+configuracion de contraseña en cada switch
+```
+enable
+configure terminal
+vtp password proyecto12025
+end
+write
+```
 
 # Pruebas de Conectividad
+ping de prueba desde la PC AD6 del area de gerencia a PC AD8 desde area de infraestructura
+![alt text](image-1.png)
+ping de prueba desde la PC RD1 del area de Analisis de Datos a Laptop RD2 desde area de Redaccion Digital
+![alt text](image-2.png)
+ping de prueba desde la PC S5 del area de Infraestructura a PC S3 desde area de Redaccion Digital
+![alt text](image-3.png)
+ping de prueba desde la laptop IT8 del area de Analisis de datos a PC IT5 desde area de Gerencia
+![alt text](image-4.png)
+ping de prueba desde la laptop G4 del area de Analisis de datos a Laptop G1 desde area de Gerencia
+![alt text](image-5.png)
+ping de prueba area local de local 2 a local 2
+![alt text](image-6.png)
 
 # Presupuesto
+
+# 📑 Presupuesto del Proyecto FIUComm
+
+Este documento presenta el presupuesto estimado para la implementación de la red empresarial **FIUComm**, considerando los equipos de red necesarios, cableado y respaldo eléctrico.  
+Los costos son aproximados y pueden variar dependiendo del proveedor y del estado del equipo (nuevo/reacondicionado).
+
