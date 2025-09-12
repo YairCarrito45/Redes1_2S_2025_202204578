@@ -6,7 +6,7 @@ Redes de Computadores 1
 Estiben Yair Lopez Leveron
 202204578
 
-###### Topologia de Red
+## Topologia de Red
 
 ![alt text](image.png)
 
@@ -2004,10 +2004,9 @@ write
 
 enable
 configure terminal
- interface fa0/12
-  description PC Local1 - Local
+ interface fa0/2
   switchport mode access
-  switchport access vlan 68
+  switchport access vlan 45
  exit
 end
 write
