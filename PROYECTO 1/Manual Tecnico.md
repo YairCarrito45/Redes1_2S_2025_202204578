@@ -1,105 +1,143 @@
-Manual Tecnico
+# Manual Técnico
 
-Universidad de San Carlos de Guatemala
-Escuela de Ciencias y Sistemas
-Redes de Computadores 1
-Estiben Yair Lopez Leveron
-202204578
+**Universidad de San Carlos de Guatemala**
+**Escuela de Ciencias y Sistemas**
+**Redes de Computadoras 1**
+**Estiben Yair López Leveron**
+**Carné: 202204578**
 
-## Topologia de Red
+---
 
-![alt text](image-8.png)
+## 1. Topología de Red
 
-# Vlans y Direccionamiento Ip
+La topología diseñada para la empresa **FIUComm Technologies** se implementó en **Cisco Packet Tracer**, respetando el modelo jerárquico de red y aplicando segmentación mediante **VLANs**, administración con **VTP**, redundancia con **STP** y enlaces agregados por **EtherChannel**.
 
-Lista de configuracion de ips y vlans
+![Topología de Red](image-8.png)
 
-## Redaccion Digital
+La red se compone de 5 áreas principales:
 
+- **Redacción Digital (VLAN 18)**
+- **Análisis de Datos (VLAN 28)**
+- **Infraestructura IT (VLAN 38)**
+- **Área Local de Infraestructura IT (VLAN 38)**
+- **Gerencia (VLAN 58)**
 
-| Departamento      | VLAN | IP              | Dispositivo | Nombre del dispositivo |
-| ----------------- | ---- | --------------- | ----------- | ---------------------- |
-| Redaccion digital | 18   | 192.168.18.1/24 | PC          | S2                     |
-| Redaccion digital | 18   | 192.168.18.2/24 | LAPTOP      | RD2                    |
-| Redaccion digital | 18   | 192.168.18.3/24 | PC          | G2                     |
-| Redaccion digital | 18   | 192.168.18.4/24 | LAPTOP      | S3                     |
+---
 
-## Analisis de Datos
+## 2. Vlans y Direccionamiento IP
 
+Cada departamento cuenta con una **VLAN dedicada** y un segmento de red enmascarado /24 (255.255.255.0).
+Esto garantiza la segmentación lógica, seguridad y facilidad de administración.
 
-| Departamento      | VLAN | IP               | Dispositivo | Nombre del dispositivo |
-| ----------------- | ---- | ---------------- | ----------- | ---------------------- |
-| Analisis de Datos | 28   | 192.168.18.5/24  | LAPTOP      | IT8                    |
-| Analisis de Datos | 28   | 192.168.18.6/24  | LAPTOP      | AD2                    |
-| Analisis de Datos | 28   | 192.168.18.7/24  | PC          | RD3                    |
-| Analisis de Datos | 28   | 192.168.18.8/24  | LAPTOP      | AD1                    |
-| Analisis de Datos | 28   | 192.168.18.9/24  | PC          | G3                     |
-| Analisis de Datos | 28   | 192.168.18.10/24 | LAPTOP      | AD5                    |
-| Analisis de Datos | 28   | 192.168.18.11/24 | PC          | RD5                    |
-| Analisis de Datos | 28   | 192.168.18.12/24 | LAPTOP      | G4                     |
-| Analisis de Datos | 28   | 192.168.18.13/24 | LAPTOP      | S4                     |
-| Analisis de Datos | 28   | 192.168.18.14/24 | PC          | AD3                    |
-| Analisis de Datos | 28   | 192.168.18.15/24 | LAPTOP      | RD4                    |
-| Analisis de Datos | 28   | 192.168.18.16/24 | PC          | AD4                    |
-| Analisis de Datos | 28   | 192.168.18.17/24 | PC          | RD1                    |
-| Analisis de Datos | 28   | 192.168.18.18/24 | PC          | IT7                    |
+---
 
-## Infraestructura IT
+### 2.1 Redacción Digital – VLAN 18
+
+Encargados de la generación de contenido multimedia y publicaciones.
 
 
-| Departamento       | VLAN | IP               | Dispositivo | Nombre del dispositivo |
+| Departamento       | VLAN | Dirección IP   | Dispositivo | Nombre del Dispositivo |
+| ------------------ | ---- | --------------- | ----------- | ---------------------- |
+| Redacción Digital | 18   | 192.168.18.1/24 | PC          | S2                     |
+| Redacción Digital | 18   | 192.168.18.2/24 | Laptop      | RD2                    |
+| Redacción Digital | 18   | 192.168.18.3/24 | PC          | G2                     |
+| Redacción Digital | 18   | 192.168.18.4/24 | Laptop      | S3                     |
+
+---
+
+### 2.2 Análisis de Datos – VLAN 28
+
+Área responsable de la recopilación, tratamiento y análisis de información estratégica.
+
+
+| Departamento       | VLAN | Dirección IP    | Dispositivo | Nombre del Dispositivo |
+| ------------------ | ---- | ---------------- | ----------- | ---------------------- |
+| Análisis de Datos | 28   | 192.168.18.5/24  | Laptop      | IT8                    |
+| Análisis de Datos | 28   | 192.168.18.6/24  | Laptop      | AD2                    |
+| Análisis de Datos | 28   | 192.168.18.7/24  | PC          | RD3                    |
+| Análisis de Datos | 28   | 192.168.18.8/24  | Laptop      | AD1                    |
+| Análisis de Datos | 28   | 192.168.18.9/24  | PC          | G3                     |
+| Análisis de Datos | 28   | 192.168.18.10/24 | Laptop      | AD5                    |
+| Análisis de Datos | 28   | 192.168.18.11/24 | PC          | RD5                    |
+| Análisis de Datos | 28   | 192.168.18.12/24 | Laptop      | G4                     |
+| Análisis de Datos | 28   | 192.168.18.13/24 | Laptop      | S4                     |
+| Análisis de Datos | 28   | 192.168.18.14/24 | PC          | AD3                    |
+| Análisis de Datos | 28   | 192.168.18.15/24 | Laptop      | RD4                    |
+| Análisis de Datos | 28   | 192.168.18.16/24 | PC          | AD4                    |
+| Análisis de Datos | 28   | 192.168.18.17/24 | PC          | RD1                    |
+| Análisis de Datos | 28   | 192.168.18.18/24 | PC          | IT7                    |
+
+---
+
+### 2.3 Infraestructura IT – VLAN 38
+
+Soporte técnico, servidores y administración de red.
+
+
+| Departamento       | VLAN | Dirección IP    | Dispositivo | Nombre del Dispositivo |
 | ------------------ | ---- | ---------------- | ----------- | ---------------------- |
 | Infraestructura IT | 38   | 192.168.18.19/24 | PC          | S5                     |
 | Infraestructura IT | 38   | 192.168.18.20/24 | PC          | IT3                    |
-| Infraestructura IT | 38   | 192.168.18.21/24 | LAPTOP      | IT2                    |
-| Infraestructura IT | 38   | 192.168.18.22/24 | LAPTOP      | G2                     |
+| Infraestructura IT | 38   | 192.168.18.21/24 | Laptop      | IT2                    |
+| Infraestructura IT | 38   | 192.168.18.22/24 | Laptop      | G2                     |
 | Infraestructura IT | 38   | 192.168.18.23/24 | PC          | RD6                    |
 | Infraestructura IT | 38   | 192.168.18.24/24 | PC          | AD8                    |
-| Infraestructura IT | 38   | 192.168.18.25/24 | LAPTOP      | IT1                    |
-| Infraestructura IT | 38   | 192.168.18.26/24 | LAPTOP      | RD7                    |
+| Infraestructura IT | 38   | 192.168.18.25/24 | Laptop      | IT1                    |
+| Infraestructura IT | 38   | 192.168.18.26/24 | Laptop      | RD7                    |
 
-## Area Local de Infraestructura IT
+---
+
+### 2.4 Área Local – Infraestructura IT – VLAN 78
+
+Segmento de red interno adicional para pruebas y operación local.
 
 
-| Departamento | VLAN | IP               | Dispositivo | Nombre del dispositivo |
+| Departamento | VLAN | Dirección IP    | Dispositivo | Nombre del Dispositivo |
 | ------------ | ---- | ---------------- | ----------- | ---------------------- |
-| Local        | 38   | 192.168.18.27/24 | PC          | Local1                 |
-| Local        | 38   | 192.168.18.28/24 | LAPTOP      | Local2                 |
-| Local        | 38   | 192.168.18.29/24 | PC          | Local3                 |
+| Local        | 78   | 192.168.18.27/24 | PC          | Local1                 |
+| Local        | 78   | 192.168.18.28/24 | Laptop      | Local2                 |
+| Local        | 78   | 192.168.18.29/24 | PC          | Local3                 |
 
-## Area de Gerencia
+---
+
+### 2.5 Área de Gerencia – VLAN 58
+
+Encargada de la gestión administrativa y estratégica de la empresa.
 
 
-| Departamento     | VLAN | IP               | Dispositivo | Nombre del dispositivo |
-| ---------------- | ---- | ---------------- | ----------- | ---------------------- |
-| Area de Gerencia | 58   | 192.168.18.30/24 | PC          | AD6                    |
-| Area de Gerencia | 58   | 192.168.18.31/24 | LAPTOP      | S1                     |
-| Area de Gerencia | 58   | 192.168.18.32/24 | PC          | RD8                    |
-| Area de Gerencia | 58   | 192.168.18.33/24 | LAPTOP      | G1                     |
-| Area de Gerencia | 58   | 192.168.18.34/24 | LAPTOP      | AD7                    |
-| Area de Gerencia | 58   | 192.168.18.35/24 | PC          | IT4                    |
-| Area de Gerencia | 58   | 192.168.18.36/24 | PC          | IT5                    |
+| Departamento | VLAN | Dirección IP    | Dispositivo | Nombre del Dispositivo |
+| ------------ | ---- | ---------------- | ----------- | ---------------------- |
+| Gerencia     | 58   | 192.168.18.30/24 | PC          | AD6                    |
+| Gerencia     | 58   | 192.168.18.31/24 | Laptop      | S1                     |
+| Gerencia     | 58   | 192.168.18.32/24 | PC          | RD8                    |
+| Gerencia     | 58   | 192.168.18.33/24 | Laptop      | G1                     |
+| Gerencia     | 58   | 192.168.18.34/24 | Laptop      | AD7                    |
+| Gerencia     | 58   | 192.168.18.35/24 | PC          | IT4                    |
+| Gerencia     | 58   | 192.168.18.36/24 | PC          | IT5                    |
 
-# Configuracion de los Switches
+# 3. Configuración de los Switches
 
-**configuracion de vtp**
+En esta sección se documenta la configuración de los switches en las diferentes áreas de la topología.
+Se incluye la configuración de **VTP (VLAN Trunking Protocol)** en modo **servidor** y **cliente**, así como la asignación del dominio correspondiente.
 
-Área central:
-Switch Multicapa (Servidor VTP)
+---
+
+## 3.1 Configuración de VTP
+
+### Área Central – Switch Multicapa (Servidor VTP)
 
 ```Cisco
 enable
 configure terminal
-  hostname SERVIDOR
+hostname SERVIDOR
 
-  vtp mode server
-  vtp version 2
-  vtp domain C5_FIUComm
+vtp mode server
+vtp version 2
+vtp domain C5_FIUComm
+
 exit
-
 write
 
-```
 
 Switches Clientes (MSW1 – MSW6)
 
@@ -413,9 +451,11 @@ exit
 write
 
 ```
+
 ## configuracion de STP
 
 switch servidor
+
 ```
 enable 
 configure terminal
@@ -425,6 +465,7 @@ write
 ```
 
 swtich clientes (todos los del area central menos el servidor)
+
 ```
 enable 
 configure terminal
@@ -434,6 +475,7 @@ write
 ```
 
 Para los otros switches
+
 ```
 enable 
 configure terminal
@@ -442,8 +484,10 @@ end
 write
 ```
 
-## swtich transpartente 
-crea vlan 
+## swtich transpartente
+
+crea vlan
+
 ```
 enable
 configure terminal
@@ -915,6 +959,7 @@ write
 switch de bienvenida
 
 switch SW1 (Anilisis de Datos)
+
 ```
 enable
 configure terminal
@@ -941,7 +986,6 @@ write
 
 ```
 
-
 switch SW8 (Infraestructura IT)
 
 ```
@@ -955,7 +999,6 @@ end
 write
 
 ```
-
 
 switch SW8 (Area de Gerencia)
 
@@ -996,11 +1039,10 @@ write
 
 ```
 
-
-
 ## configuracion para conexiones
 
 switch MSW1
+
 ```
 enable
 configure terminal
@@ -1025,6 +1067,7 @@ write
 ```
 
 switch MSW2
+
 ```
 enable
 configure terminal
@@ -1048,8 +1091,8 @@ end
 write
 ```
 
-
 switch MSW3
+
 ```
 enable
 configure terminal
@@ -1086,6 +1129,7 @@ write
 ```
 
 switch MSW4
+
 ```
 enable
 configure terminal
@@ -1098,8 +1142,8 @@ exit
 write
 ```
 
-
 switch MSW5
+
 ```
 enable
 configure terminal
@@ -1113,6 +1157,7 @@ write
 ```
 
 switch MSW6
+
 ```
 enable
 configure terminal
@@ -1124,7 +1169,9 @@ exit
 end
 write
 ```
+
 switch MSW7
+
 ```
 enable
 configure terminal
@@ -1151,8 +1198,8 @@ write
 
 ```
 
-
 switch MSW8
+
 ```
 enable
 configure terminal
@@ -1188,6 +1235,7 @@ write
 ```
 
 switch MSW10
+
 ```
 enable
 configure terminal
@@ -1211,6 +1259,7 @@ write
 ```
 
 switch SW1
+
 ```
 enable
 configure terminal
@@ -1284,6 +1333,7 @@ write
 ```
 
 switch SW2
+
 ```
 enable
 configure terminal
@@ -1316,8 +1366,8 @@ end
 write
 ```
 
-
 switch SW3
+
 ```
 enable
 configure terminal
@@ -1372,6 +1422,7 @@ write
 ```
 
 switch SW4
+
 ```
 enable
 configure terminal
@@ -1404,9 +1455,8 @@ write
 
 ```
 
-
-
 switch SW5
+
 ```
 enable
 configure terminal
@@ -1451,6 +1501,7 @@ write
 ```
 
 switch SW6
+
 ```
 enable
 configure terminal
@@ -1506,9 +1557,8 @@ write
 
 ```
 
-
-
 switch SW7
+
 ```
 enable
 configure terminal
@@ -1552,10 +1602,8 @@ write
 
 ```
 
-
-
-
 switch SW8
+
 ```
 enable
 configure terminal
@@ -1601,8 +1649,8 @@ write
 
 ```
 
-
 switch SW9
+
 ```
 enable
 configure terminal
@@ -1635,6 +1683,7 @@ write
 ```
 
 switch SW10
+
 ```
 enable
 configure terminal
@@ -1669,6 +1718,7 @@ write
 ```
 
 switch SW11
+
 ```
 enable
 configure terminal
@@ -1692,6 +1742,7 @@ write
 ```
 
 switch SW12
+
 ```
 enable
 configure terminal
@@ -1727,6 +1778,7 @@ write
 ```
 
 switch S13
+
 ```
 enable
 configure terminal
@@ -1750,6 +1802,7 @@ write
 ```
 
 switch S14
+
 ```
 enable
 configure terminal
@@ -1784,8 +1837,8 @@ write
 
 ```
 
-
 switch SW15
+
 ```
 enable
 configure terminal
@@ -1810,6 +1863,7 @@ write
 ```
 
 switch SW16
+
 ```
 enable
 configure terminal
@@ -1832,9 +1886,8 @@ end
 write
 ```
 
-
-
 switch SW17
+
 ```
 enable
 configure terminal
@@ -1928,8 +1981,8 @@ write
 
 ```
 
-
 switch SW18
+
 ```
 enable
 configure terminal
@@ -1955,6 +2008,7 @@ write
 ```
 
 switch SW20
+
 ```
 enable
 configure terminal
@@ -1988,7 +2042,9 @@ end
 write
 
 ```
+
 switch SW19
+
 ```
 enable
 configure terminal
@@ -2013,6 +2069,7 @@ write
 ```
 
 switch SW19
+
 ```
 enable
 configure terminal
@@ -2045,6 +2102,7 @@ write
 ```
 
 configuracion de contraseña en cada switch
+
 ```
 enable
 configure terminal
@@ -2054,6 +2112,7 @@ write
 ```
 
 # Pruebas de Conectividad
+
 ping de prueba desde la PC AD6 del area de gerencia a PC AD8 desde area de infraestructura
 ![alt text](image-1.png)
 ping de prueba desde la PC RD1 del area de Analisis de Datos a Laptop RD2 desde area de Redaccion Digital
@@ -2071,6 +2130,37 @@ ping de prueba area local de local 2 a local 2
 
 # 📑 Presupuesto del Proyecto FIUComm
 
-Este documento presenta el presupuesto estimado para la implementación de la red empresarial **FIUComm**, considerando los equipos de red necesarios, cableado y respaldo eléctrico.  
+Este documento presenta el presupuesto estimado para la implementación de la red empresarial **FIUComm**, considerando los equipos de red necesarios, cableado y respaldo eléctrico.
 Los costos son aproximados y pueden variar dependiendo del proveedor y del estado del equipo (nuevo/reacondicionado).
 
+## Presupuesto estimado (referencial)
+
+
+## Equipamiento utilizado en la simulación
+
+| Ítem                        | Cant. | Precio unitario (USD) | Precio unitario (Q) | Subtotal (Q) |
+| --------------------------- | :---: | --------------------: | ------------------: | -----------: |
+| Switch 2960-24TT            |   18  |              1,050.00 |            8,190.00 |   147,420.00 |
+| Switch 3560-24PS            |   10  |              2,780.00 |           21,684.00 |   216,840.00 |
+| Laptops                     |   17  |                750.00 |            5,850.00 |    99,450.00 |
+| PCs de escritorio           |   18  |                650.00 |            5,070.00 |    91,260.00 |
+| Patch Panel (24 puertos)    |   4   |                120.00 |              936.00 |     3,744.00 |
+| Rack 12U c/ ventilación     |   2   |                420.00 |            3,276.00 |     6,552.00 |
+| UPS 1500VA                  |   2   |                650.00 |            5,070.00 |    10,140.00 |
+| Cable UTP Cat6 (305 m)      |   3   |                210.00 |            1,638.00 |     4,914.00 |
+| Conectores RJ45 Cat6 (x100) |   2   |                 35.00 |              273.00 |       546.00 |
+| Patch cords Cat6 (x20)      |   3   |                 60.00 |              468.00 |     1,404.00 |
+| Organizadores cableado      |   6   |                 30.00 |              234.00 |     1,404.00 |
+| Licencias SmartNet (3 años) |   10  |                950.00 |            7,410.00 |    74,100.00 |
+
+Subtotal equipos: Q 657,770.00
+Mano de obra e instalación (10%): Q 65,777.00
+Contingencia (12%): Q 78,932.00
+TOTAL ESTIMADO: ~ Q 802,479.00
+
+
+### Justificación de los precios
+
+Los precios presentados en el presupuesto se basan en referencias de mercado internacional de proveedores de equipos de redes como Cisco, Panduit, APC, Dell y HP. Se tomó como referencia el costo de equipos nuevos con garantía, considerando que un switch Cisco Catalyst 2960-24TT ronda los USD 1,000–1,200, mientras que un Cisco Catalyst 3560-24PS se encuentra entre USD 2,500–3,000 según el distribuidor. Los precios de cableado estructurado (cajas de cable Cat6, patch panels, conectores y patch cords) corresponden a valores promedio de marcas reconocidas como Belden, Panduit y AMP. Para equipos de usuario final, se consideraron laptops y PCs de escritorio empresariales de gama media, con precios aproximados de USD 700–800 y USD 600–700 respectivamente, basados en cotizaciones de fabricantes como Dell, HP y Lenovo. Los UPS y racks corresponden a marcas como APC y TrippLite, con valores de mercado entre USD 400–700.  
+
+Adicionalmente, se incluyó el costo de licencias y soporte Cisco SmartNet por tres años, estimado en USD 900–1,000 por switch, lo cual garantiza actualizaciones y soporte especializado. Todos los precios fueron convertidos a quetzales utilizando un tipo de cambio de Q7.80 por cada USD, valor vigente en el mercado guatemalteco. Finalmente, se agregó un 10% por mano de obra (instalación, pruebas y certificación de red) y un 12% de contingencia para cubrir variaciones de precio o imprevistos, tal como se recomienda en la planificación de proyectos de redes empresariales.
