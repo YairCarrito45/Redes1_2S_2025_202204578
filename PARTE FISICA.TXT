@@ -1,0 +1,73 @@
+lado izquierda
+
+enable
+conf terminal
+    hostname SW-8
+ip routing
+
+! VLAN/SGW para la LAN izquierda
+vlan 8
+ name VLAN_GRUPO15
+exit
+interface Vlan15
+ ip address 192.168.8.1 255.255.255.0
+ no shutdown
+exit
+
+! Puerto a la laptop
+interface FastEthernet0/2
+ switchport mode access
+ switchport access vlan 8
+ spanning-tree portfast
+exit
+
+! Enlace L3 al otro switch (Fa0/1)
+interface FastEthernet0/1
+ no switchport
+ ip address 10.0.23.1 255.255.255.252
+ no shutdown
+exit
+
+! Ruta estática hacia la LAN del otro grupo
+ip route 192.178.8.0 255.255.255.0 10.0.23.2
+
+end
+wr
+
+
+
+lado derecho 
+
+enable
+conf t
+hostname SW-G8
+ip routing
+
+! VLAN/SGW para la LAN derecha
+vlan 8
+ name VLAN_GRUPO8
+exit
+interface Vlan8
+ ip address 192.178.8.1 255.255.255.0
+ no shutdown
+exit
+
+! Puerto a la laptop
+interface FastEthernet0/2
+ switchport mode access
+ switchport access vlan 8
+ spanning-tree portfast
+exit
+
+! Enlace L3 al otro switch (Fa0/1)
+interface FastEthernet0/1
+ no switchport
+ ip address 10.0.23.2 255.255.255.252
+ no shutdown
+exit
+
+! Ruta estática hacia la LAN del otro grupo
+ip route 192.168.15.0 255.255.255.0 10.0.23.1
+
+end
+wr
