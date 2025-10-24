@@ -223,4 +223,31 @@ Se usan para enlaces simples o controlados.
 | PC-PT Biblioteca5    | 55   | 172.16.78.226  | 255.255.255.240    | 172.16.78.225   |
 | PC-PT Biblioteca4    | 55   | 172.16.78.227  | 255.255.255.240    | 172.16.78.225   |
 
-> Si deseas IP de **gestión** para SW7–SW9, colócalos en la VLAN 45 y usa direcciones libres del rango 172.16.78.2–126 con gateway 172.16.78.1.
+
+## EDIFICIO S11
+
+### Direccionamiento IP — Edificio S11 (Carnet 202204578)
+
+**Base:** 172.148.78.0/24  
+**Y=5 ⇒ VLANs:** 15 Estudiantes, 25 Docentes, 35 Vigilancia, 45 Admin.  
+**VRRP/HSRP:** VIP = primera IP usable. R10 segunda. R11 tercera.
+
+#### Subredes por VLAN (VLSM)
+| VLAN | Nombre       | Req. | Subred              | Máscara            | VIP (GW)       | R10 subif       | R11 subif       |
+|----:|---------------|----:|---------------------|--------------------|----------------|-----------------|-----------------|
+| 15  | Estudiantes   | 100 | 172.148.78.0/25     | 255.255.255.128    | 172.148.78.1   | 172.148.78.2    | 172.148.78.3    |
+| 45  | Administración| 55  | 172.148.78.128/26   | 255.255.255.192    | 172.148.78.129 | 172.148.78.130  | 172.148.78.131  |
+| 25  | Docentes      | 15  | 172.148.78.192/27   | 255.255.255.224    | 172.148.78.193 | 172.148.78.194  | 172.148.78.195  |
+| 35  | Vigilancia    | 10  | 172.148.78.224/28   | 255.255.255.240    | 172.148.78.225 | 172.148.78.226  | 172.148.78.227  |
+
+
+
+#### IP por dispositivo (según tu diagrama)
+| Dispositivo            | VLAN | IP               | Máscara              | Gateway (VIP)    |
+|------------------------|-----:|------------------|----------------------|------------------|
+| PC-PT Admin7          | 45   | 172.148.78.132   | 255.255.255.192      | 172.148.78.129   |
+| PC-PT Docentes3       | 25   | 172.148.78.196   | 255.255.255.224      | 172.148.78.193   |
+| Laptop-PT Docentes4   | 25   | 172.148.78.197   | 255.255.255.224      | 172.148.78.193   |
+| PC-PT Estudiantes4    | 15   | 172.148.78.10    | 255.255.255.128      | 172.148.78.1     |
+| PC-PT Estudiantes5    | 15   | 172.148.78.11    | 255.255.255.128      | 172.148.78.1     |
+| Laptop-PT Vigilancia5 | 35   | 172.148.78.228   | 255.255.255.240      | 172.148.78.225   |
