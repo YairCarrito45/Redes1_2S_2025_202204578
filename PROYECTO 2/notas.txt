@@ -1,0 +1,72 @@
+QUE ES VLSM/FLSM 
+
+
+VLSM (VARIABLE LENGTH SUBNET MASKING)
+esto es una tecnica de subneteo que usa mascaras de red de longitud variable, este permite asignar subredes
+de distintos tamaños segun la cantidad de hosts requeridos, aprovechando mejor las direcciones ip 
+
+por ejemplo un subred /26 para 50 equipos y una de /30 para un enlace punto a punto
+
+FLSM (FIXED LENGTH SUBNET MASKING)
+esto signifca que todas las subredes usan las mismas mascaras, esto es mas simple pero se desperdician ips 
+si las redes no tienen el mismo tamaños.
+
+
+
+QUE ES SUBNETEO EFICIENTE
+el subnteo eficiente es el proceso de dividir una red del tamaño justo usando 
+VLSM para minimizar el desperdicio de IPs y mantener un mejor orden logico entre segmentos.
+
+
+QUE ES UN ROUTER-ON-A-STICK
+este es un metodo para que un solo router maneje multiples VLANS usando una interfaz fisica y varias subinterfaces
+virtuales, cada una con una ip de puerta de enlace para una VLAN. permite el enrutamiento inter-VLAN
+
+
+QUE ES UN ACLS (ACCES CONTROL LIST)
+es un conjunto de reglas que controla que trafico que puede pasar por un dispositivo
+
+este se usa para router y firewals
+este puede permitir o denegar trafico segun la IP origen / destino, protocolo o puerto 
+en este proyecto solo se permite comunicacion entre dispositivos de la misma VLAN
+
+
+QUE ES HSRP O VRRP
+
+HSRP (HOT STANDBY ROUTER PROTOCOL) Y VRRP (VIRTUAL ROUTER REDUNDANCY POTOCOL)
+estos son protocolos de redunancia que permiten tener dos routers o switches activos/pasivos con una ip virtual 
+compartida
+si el principal falla, el secundario asume automaticamente la puerta de enlace
+HSRP es propietario de CISCO, VRRP es estandar abierto
+
+
+
+QUE ES RIP
+este es un protocolo dinamico basado en distancias (saltos)
+maximo 15 saltos
+este es facil de configurar, pero es algo lento y limitado
+
+
+QUE ES OSPF  (OPEN SHORTEST PATH FIRST)
+protocolo dinamico basado en estado de enlace 
+
+este calcula la ruta mas corta con el algoritmo DIJSTRA
+es escalable y rapido
+este usa areas para dividir grandes redes
+
+
+QUE ES EIGRP (ENHANCED INTERIOR GATEWAY ROUTING PROTOCOL)
+protocolo propietario de cisco 
+combina lo mejor de ric y ospf 
+calcula rutas mas rapido y estables
+usa metricas compuestas 
+
+
+QUE SON RUTAS ESTATICAS
+Rutas estáticas
+Rutas configuradas manualmente en el router.
+
+No cambian automáticamente si una ruta cae.
+
+Se usan para enlaces simples o controlados.
+
