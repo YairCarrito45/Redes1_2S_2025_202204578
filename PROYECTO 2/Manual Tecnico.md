@@ -115,6 +115,9 @@ Se usan para enlaces simples o controlados.
 - MS1: V45 **192.168.78.2**, V35 **192.168.78.130**, V15 **192.168.78.162**, V25 **192.168.78.170**
 - MS2: V45 **192.168.78.3**, V35 **192.168.78.131**, V15 **192.168.78.163**, V25 **192.168.78.171**
 
+
+### DIGA
+
 ### Hosts y servidores
 
 
@@ -132,8 +135,6 @@ Se usan para enlaces simples o controlados.
 | Docentes Server        |   25 | 192.168.78.172 | 255.255.255.248 | 192.168.78.169 |
 
 
-
-### 4.1. DIGA
 
 **Red base:** 192.168.78.0/24
 
@@ -159,3 +160,38 @@ Se usan para enlaces simples o controlados.
 - **Comandos:** *(Agregar configuración real aquí)*
 
 ---
+
+
+### BIBLIOTECA
+### Direccionamiento IP — Biblioteca Central (Carnet 202204578)
+
+**Base:** 192.158.78.0/24  
+**Y=5 ⇒ VLANs:** 15 Estudiantes, 35 Vigilancia, 55 Biblioteca.  
+**VRRP/HSRP:** VIP = primera IP usable. R1 usa la segunda. R0 usa la tercera.
+
+#### Subredes por VLAN (VLSM)
+| VLAN | Nombre      | Subred              | Máscara            | VIP (Gateway)   | R1 subif        | R0 subif        |
+|-----:|-------------|---------------------|--------------------|-----------------|-----------------|-----------------|
+| 15   | Estudiantes | 192.158.78.0/25     | 255.255.255.128    | 192.158.78.1    | 192.158.78.2    | 192.158.78.3    |
+| 35   | Vigilancia  | 192.158.78.128/27   | 255.255.255.224    | 192.158.78.129  | 192.158.78.130  | 192.158.78.131  |
+| 55   | Biblioteca  | 192.158.78.160/27   | 255.255.255.224    | 192.158.78.161  | 192.158.78.162  | 192.158.78.163  |
+
+> Subinterfaces sugeridas: `G0/0.15`, `G0/0.35`, `G0/0.55` en **R1** y **R0**.
+
+#### IP por dispositivo (según tu diagrama)
+| Dispositivo                    | VLAN | IP              | Máscara            | Gateway (VIP)   |
+|--------------------------------|-----:|-----------------|--------------------|-----------------|
+| PC-PT estudiante1              | 15   | 192.158.78.10   | 255.255.255.128    | 192.158.78.1    |
+| Laptop-PT estudiante2          | 15   | 192.158.78.11   | 255.255.255.128    | 192.158.78.1    |
+| PC-PT estudiante3              | 15   | 192.158.78.12   | 255.255.255.128    | 192.158.78.1    |
+| PC-PT vigilancia1              | 35   | 192.158.78.132  | 255.255.255.224    | 192.158.78.129  |
+| PC-PT biblioteca1              | 55   | 192.158.78.170  | 255.255.255.224    | 192.158.78.161  |
+| PC-PT biblioteca3              | 55   | 192.158.78.171  | 255.255.255.224    | 192.158.78.161  |
+| Router **R1** G0/0.15          | 15   | 192.158.78.2    | 255.255.255.128    | —               |
+| Router **R1** G0/0.35          | 35   | 192.158.78.130  | 255.255.255.224    | —               |
+| Router **R1** G0/0.55          | 55   | 192.158.78.162  | 255.255.255.224    | —               |
+| Router **R0** G0/0.15          | 15   | 192.158.78.3    | 255.255.255.128    | —               |
+| Router **R0** G0/0.35          | 35   | 192.158.78.131  | 255.255.255.224    | —               |
+| Router **R0** G0/0.55          | 55   | 192.158.78.163  | 255.255.255.224    | —               |
+
+> Los switches de acceso y MS0 pueden llevar IP de **gestión** si lo requieres. Recomiendo colocarlos en VLAN 55 o 15 y tomar direcciones libres del rango correspondiente.
