@@ -95,14 +95,20 @@ Se usan para enlaces simples o controlados.
 
 ## 4. Detalle por Edificio
 
-## DIGA — Direccionamiento por dispositivo
 
+
+
+
+### Direccionamiento IP — DIGA (Carnet 202204578)
 **Bases y VIPs**
 
-- VLAN 45 Admin: 192.168.78.0/25  | VIP **192.168.78.1**  | Máscara 255.255.255.128
-- VLAN 35 Vigilancia: 192.168.78.128/27 | VIP **192.168.78.129** | Máscara 255.255.255.224
-- VLAN 15 Estudiantes: 192.168.78.160/29 | VIP **192.168.78.161** | Máscara 255.255.255.248
-- VLAN 25 Docentes: 192.168.78.168/29 | VIP **192.168.78.169** | Máscara 255.255.255.248
+| VLAN | Nombre        | Subred              | Máscara            | VIP (Gateway)   | MS1 SVI          | MS2 SVI          |
+|------|----------------|---------------------|--------------------|-----------------|-----------------|-----------------|
+| 45   | Administración | 192.168.78.0/25     | 255.255.255.128    | 192.168.78.1    | 192.168.78.2    | 192.168.78.3    |
+| 35   | Vigilancia     | 192.168.78.128/27   | 255.255.255.224    | 192.168.78.129  | 192.168.78.130  | 192.168.78.131  |
+| 15   | Estudiantes    | 192.168.78.160/29   | 255.255.255.248    | 192.168.78.161  | 192.168.78.162  | 192.168.78.163  |
+| 25   | Docentes       | 192.168.78.168/29   | 255.255.255.248    | 192.168.78.169  | 192.168.78.170  | 192.168.78.171  |
+
 
 **SVIs y HSRP**
 
@@ -125,9 +131,7 @@ Se usan para enlaces simples o controlados.
 | Estudiantes Server     |   15 | 192.168.78.164 | 255.255.255.248 | 192.168.78.161 |
 | Docentes Server        |   25 | 192.168.78.172 | 255.255.255.248 | 192.168.78.169 |
 
-> Los **switches de acceso (SW3, SW4, SW5, SW6)** no requieren IP salvo **gestión**. Si usas gestión, colócalos en VLAN 45 y toma direcciones libres del rango 192.168.78.16–126 con gateway 192.168.78.1.
-> Los **enlaces troncales** no llevan IP.
-> Los **/30 hacia backbone** se asignan al definir la salida a R4/firewall; quedarán fuera de este bloque.
+
 
 ### 4.1. DIGA
 
