@@ -176,7 +176,7 @@ Se usan para enlaces simples o controlados.
 | 35   | Vigilancia  | 192.158.78.128/27   | 255.255.255.224    | 192.158.78.129  | 192.158.78.130  | 192.158.78.131  |
 | 55   | Biblioteca  | 192.158.78.160/27   | 255.255.255.224    | 192.158.78.161  | 192.158.78.162  | 192.158.78.163  |
 
-> Subinterfaces sugeridas: `G0/0.15`, `G0/0.35`, `G0/0.55` en **R1** y **R0**.
+
 
 #### IP por dispositivo (según tu diagrama)
 | Dispositivo                    | VLAN | IP              | Máscara            | Gateway (VIP)   |
@@ -194,4 +194,33 @@ Se usan para enlaces simples o controlados.
 | Router **R0** G0/0.35          | 35   | 192.158.78.131  | 255.255.255.224    | —               |
 | Router **R0** G0/0.55          | 55   | 192.158.78.163  | 255.255.255.224    | —               |
 
-> Los switches de acceso y MS0 pueden llevar IP de **gestión** si lo requieres. Recomiendo colocarlos en VLAN 55 o 15 y tomar direcciones libres del rango correspondiente.
+
+
+
+## EDIFICIO T4
+### Direccionamiento IP — Edificio T4 (Carnet 202204578)
+
+**Base:** 172.16.78.0/24  
+**Y=5 ⇒ VLANs:** 15 Estudiantes, 25 Docentes, 35 Vigilancia, 45 Admin, 55 Biblioteca.  
+**Gateway:** SVI en **MS5** = primera IP usable de cada subred.
+
+#### Subredes por VLAN (VLSM)
+| VLAN | Nombre       | Req. hosts | Subred             | Máscara          | Gateway (MS5 SVI) |
+|----:|---------------|-----------:|--------------------|------------------|-------------------|
+| 45  | Administración| 75         | 172.16.78.0/25     | 255.255.255.128  | 172.16.78.1       |
+| 15  | Estudiantes   | 60         | 172.16.78.128/26   | 255.255.255.192  | 172.16.78.129     |
+| 35  | Vigilancia    | 15         | 172.16.78.192/27   | 255.255.255.224  | 172.16.78.193     |
+| 55  | Biblioteca    | 12         | 172.16.78.224/28   | 255.255.255.240  | 172.16.78.225     |
+| 25  | Docentes      | 10         | 172.16.78.240/28   | 255.255.255.240  | 172.16.78.241     |
+
+#### IP por dispositivo (según tu diagrama)
+| Dispositivo          | VLAN | IP             | Máscara            | Gateway         |
+|----------------------|-----:|----------------|--------------------|-----------------|
+| PC-PT Admin6         | 45   | 172.16.78.10   | 255.255.255.128    | 172.16.78.1     |
+| PC-PT Estudiante10   | 15   | 172.16.78.130  | 255.255.255.192    | 172.16.78.129   |
+| PC-PT Docente2       | 25   | 172.16.78.242  | 255.255.255.240    | 172.16.78.241   |
+| PC-PT vigilancia4    | 35   | 172.16.78.194  | 255.255.255.224    | 172.16.78.193   |
+| PC-PT Biblioteca5    | 55   | 172.16.78.226  | 255.255.255.240    | 172.16.78.225   |
+| PC-PT Biblioteca4    | 55   | 172.16.78.227  | 255.255.255.240    | 172.16.78.225   |
+
+> Si deseas IP de **gestión** para SW7–SW9, colócalos en la VLAN 45 y usa direcciones libres del rango 172.16.78.2–126 con gateway 172.16.78.1.
