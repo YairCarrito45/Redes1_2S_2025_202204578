@@ -93,11 +93,12 @@ Se usan para enlaces simples o controlados.
 
 ---
 
-## 4. Detalle por Edificio
+## 4. Detalles de configuracion por Edificio
 
 
 
 
+### DIGA
 
 ### Direccionamiento IP — DIGA (Carnet 202204578)
 **Bases y VIPs**
@@ -116,9 +117,7 @@ Se usan para enlaces simples o controlados.
 - MS2: V45 **192.168.78.3**, V35 **192.168.78.131**, V15 **192.168.78.163**, V25 **192.168.78.171**
 
 
-### DIGA
-
-### Hosts y servidores
+### Ips y servidores
 
 
 | Dispositivo            | VLAN | IP             | Máscara        | Gateway (VIP)  |
@@ -157,7 +156,14 @@ Se usan para enlaces simples o controlados.
 - **HSRP:** Entre MS1 y MS2
 - **RIP:** Comunicación con Biblioteca
 - **ACLs:** Permiten solo tráfico entre VLANs iguales
-- **Comandos:** *(Agregar configuración real aquí)*
+
+
+
+## Comandos
+
+
+
+
 
 ---
 
@@ -251,3 +257,31 @@ Se usan para enlaces simples o controlados.
 | PC-PT Estudiantes4    | 15   | 172.148.78.10    | 255.255.255.128      | 172.148.78.1     |
 | PC-PT Estudiantes5    | 15   | 172.148.78.11    | 255.255.255.128      | 172.148.78.1     |
 | Laptop-PT Vigilancia5 | 35   | 172.148.78.228   | 255.255.255.240      | 172.148.78.225   |
+
+
+
+# S12
+### Direccionamiento IP — Edificio S12 (Carnet 202204578)
+
+**Base:** 192.128.78.0/24  
+**Y=5 ⇒ VLANs:** 15 Estudiantes, 25 Docentes, 35 Vigilancia, 45 Admin.  
+**HSRP:** VIP = primera IP usable. **MS7** segunda. **MS8** tercera.
+
+#### Subredes por VLAN (VLSM)
+| VLAN | Nombre       | Req. | Subred              | Máscara            | VIP (GW)       | MS7 SVI         | MS8 SVI         |
+|----:|---------------|----:|---------------------|--------------------|----------------|-----------------|-----------------|
+| 15  | Estudiantes   | 125 | 192.128.78.0/25     | 255.255.255.128    | 192.128.78.1   | 192.128.78.2    | 192.128.78.3    |
+| 25  | Docentes      | 35  | 192.128.78.128/26   | 255.255.255.192    | 192.128.78.129 | 192.128.78.130  | 192.128.78.131  |
+| 45  | Administración| 25  | 192.128.78.192/27   | 255.255.255.224    | 192.128.78.193 | 192.128.78.194  | 192.128.78.195  |
+| 35  | Vigilancia    | 20  | 192.128.78.224/27   | 255.255.255.224    | 192.128.78.225 | 192.128.78.226  | 192.128.78.227  |
+
+#### IP por dispositivo (según tu diagrama)
+| Dispositivo            | VLAN | IP               | Máscara              | Gateway (VIP)    |
+|------------------------|-----:|------------------|----------------------|------------------|
+| PC-PT Estudiante6      | 15   | 192.128.78.10    | 255.255.255.128      | 192.128.78.1     |
+| PC-PT Estudiante7      | 15   | 192.128.78.11    | 255.255.255.128      | 192.128.78.1     |
+| PC-PT Docentes5        | 25   | 192.128.78.132   | 255.255.255.192      | 192.128.78.129   |
+| PC-PT Docentes6        | 25   | 192.128.78.133   | 255.255.255.192      | 192.128.78.129   |
+| PC-PT Admin8           | 45   | 192.128.78.196   | 255.255.255.224      | 192.128.78.193   |
+| PC-PT Vigilancia6      | 35   | 192.128.78.228   | 255.255.255.224      | 192.128.78.225   |
+
